@@ -5,8 +5,9 @@
 
 [node name="World" type="Node2D"]
 
+[node name="Wall" parent="." instance=ExtResource("2_7jij6")]
+position = Vector2(271, 377)
+
 [node name="Cannon" parent="." instance=ExtResource("1_eet01")]
 position = Vector2(245, 242)
-
-[node name="Wall" parent="." instance=ExtResource("2_7jij6")]
-position = Vector2(373, 382)
+launchPowMultiplier = 10.0

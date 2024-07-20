@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://davqjlqx6s665"]
+[gd_scene load_steps=3 format=3 uid="uid://davqjlqx6s665"]
 
 [ext_resource type="Texture2D" uid="uid://dmo0d2ypeg48t" path="res://assets/particles/health_cross.png" id="1_ix6jg"]
+
+[sub_resource type="Gradient" id="Gradient_rk8r7"]
+offsets = PackedFloat32Array(0.567416, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="HealthParticles" type="CPUParticles2D"]
 emitting = false
@@ -19,3 +23,4 @@ linear_accel_min = 1.77
 linear_accel_max = 6.0
 scale_amount_min = 0.2
 scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_rk8r7")

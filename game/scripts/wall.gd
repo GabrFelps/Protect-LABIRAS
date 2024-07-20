@@ -5,6 +5,7 @@ extends Area2D
 
 @onready var health_particles : PackedScene = preload("res://scenes/health_particles.tscn");
 
+
 func _ready():
 	update_max_health();
 	restore_health();
@@ -25,5 +26,7 @@ func restore_health():
 # Toma dano
 func take_damage(attack : Attack):
 	health -= attack.attack_damage;
+	if health <= 0:
+		pass
 	
 	

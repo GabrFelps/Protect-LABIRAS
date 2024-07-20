@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxoeoq6gfjq77"]
+
+[ext_resource type="Script" path="res://scripts/cannonball.gd" id="1_3k6lk"]
+[ext_resource type="Texture2D" uid="uid://cehfn8o5lhkmy" path="res://assets/cannonball.png" id="1_ccw4p"]
+
+[node name="Cannonball" type="RigidBody2D"]
+script = ExtResource("1_3k6lk")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ccw4p")

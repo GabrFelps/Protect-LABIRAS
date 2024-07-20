@@ -4,6 +4,8 @@ extends Node
 @onready var enemy_db: Dictionary = {};
 @onready var game_db: Dictionary = {};
 
+var current_wave = 1; 
+
 func _ready():
 	get_db("enemy_db");
 	get_db("game_db");

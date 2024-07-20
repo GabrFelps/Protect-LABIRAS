@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://davqjlqx6s665"]
+
+[ext_resource type="Texture2D" uid="uid://dmo0d2ypeg48t" path="res://assets/particles/health_cross.png" id="1_ix6jg"]
+
+[node name="HealthParticles" type="CPUParticles2D"]
+emitting = false
+amount = 15
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.52
+randomness = 0.76
+lifetime_randomness = 0.5
+texture = ExtResource("1_ix6jg")
+emission_shape = 1
+emission_sphere_radius = 101.8
+gravity = Vector2(0, -400)
+linear_accel_min = 1.77
+linear_accel_max = 6.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4

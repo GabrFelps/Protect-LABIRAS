@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://tyisjv06sou1"]
+
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_y88lp"]
+[ext_resource type="Texture2D" uid="uid://dmjh45flc8afq" path="res://icon.svg" id="2_0y60n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbhm2"]
+
+[node name="Wall" type="Area2D"]
+scale = Vector2(0.5, 1)
+skew = -0.261799
+script = ExtResource("1_y88lp")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0y60n")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(6.23566, 6.23566)
+shape = SubResource("RectangleShape2D_sbhm2")

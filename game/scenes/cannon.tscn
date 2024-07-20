@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://wlsbi66507wv"]
+
+[ext_resource type="Texture2D" uid="uid://dmjh45flc8afq" path="res://icon.svg" id="1_38htl"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_vairv"]
+
+[node name="Cannon" type="Area2D"]
+script = ExtResource("1_vairv")
+
+[node name="Base" type="Sprite2D" parent="."]
+modulate = Color(0.437793, 0.261063, 0.149802, 1)
+position = Vector2(-12, 30)
+scale = Vector2(0.75, 0.2)
+texture = ExtResource("1_38htl")
+
+[node name="CannonBarrel" type="Sprite2D" parent="."]
+modulate = Color(0.220558, 0.689736, 0, 1)
+position = Vector2(34, 0)
+scale = Vector2(1, 0.5)
+texture = ExtResource("1_38htl")

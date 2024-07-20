@@ -1,0 +1,12 @@
+enemy,max_health,damage,speed,points,wave_min
+porco,5,20,12,10,1
+preguica,7,50,5,25,5
+café,10,10,30,30,10
+prostiranha,12,40,7,69,15
+corrupto,15,50,22,35,20
+amostradinho,33,250,4,100,25
+agiota,20,100,15,50,30
+covid20,50,80,19,120,35
+homemdascavernas,30,200,10,100,40
+formiga,40,150,20,25,45
+carteira,1,300,18,500,50

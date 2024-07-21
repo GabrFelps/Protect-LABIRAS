@@ -17,3 +17,7 @@ modulate = Color(0.220558, 0.689736, 0, 1)
 position = Vector2(34, 0)
 scale = Vector2(1, 0.5)
 texture = ExtResource("1_38htl")
+
+[node name="ShootingPosition" type="Marker2D" parent="CannonBarrel"]
+position = Vector2(63, 0)
+scale = Vector2(1, 2)

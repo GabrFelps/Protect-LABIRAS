@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://wlsbi66507wv"]
+[gd_scene load_steps=4 format=3 uid="uid://wlsbi66507wv"]
 
 [ext_resource type="Texture2D" uid="uid://dmjh45flc8afq" path="res://icon.svg" id="1_38htl"]
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="1_vairv"]
+
+[sub_resource type="Gradient" id="Gradient_hdi2m"]
+offsets = PackedFloat32Array(0.00561798, 0.395833, 0.8125)
+colors = PackedColorArray(0.755704, 0.232752, 7.24665e-08, 1, 0.453871, 0.520321, 1.62e-07, 1, 0.350973, 0.618356, 1.92523e-07, 1)
 
 [node name="Cannon" type="Area2D"]
 script = ExtResource("1_vairv")
@@ -13,7 +17,7 @@ scale = Vector2(0.75, 0.2)
 texture = ExtResource("1_38htl")
 
 [node name="CannonBarrel" type="Sprite2D" parent="."]
-modulate = Color(0.220558, 0.689736, 0, 1)
+self_modulate = Color(0, 0.686638, 3.85046e-07, 1)
 position = Vector2(34, 0)
 scale = Vector2(1, 0.5)
 texture = ExtResource("1_38htl")
@@ -21,3 +25,9 @@ texture = ExtResource("1_38htl")
 [node name="ShootingPosition" type="Marker2D" parent="CannonBarrel"]
 position = Vector2(63, 0)
 scale = Vector2(1, 2)
+
+[node name="Trajectory" type="Line2D" parent="CannonBarrel/ShootingPosition"]
+unique_name_in_owner = true
+width = 12.0
+gradient = SubResource("Gradient_hdi2m")
+end_cap_mode = 2

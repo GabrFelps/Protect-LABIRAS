@@ -9,11 +9,8 @@
 [node name="Wall" parent="." instance=ExtResource("2_7jij6")]
 position = Vector2(271, 377)
 
-[node name="Cannon" parent="." instance=ExtResource("1_eet01")]
-position = Vector2(245, 242)
-launchPowMultiplier = 10.0
-
 [node name="Ground" parent="." instance=ExtResource("3_6kyds")]
 position = Vector2(468, 466)
 
-[editable path="Cannon"]
+[node name="Cannon" parent="." instance=ExtResource("1_eet01")]
+position = Vector2(222, 240)

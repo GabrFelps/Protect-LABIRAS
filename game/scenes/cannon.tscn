@@ -18,13 +18,14 @@ position = Vector2(34, 0)
 texture = ExtResource("2_w7v0g")
 
 [node name="ShootingPosition" type="Marker2D" parent="CannonBarrel"]
-position = Vector2(42, -4)
-scale = Vector2(1, 2)
+position = Vector2(42, 0)
 
 [node name="Trajectory" type="Line2D" parent="CannonBarrel/ShootingPosition"]
 unique_name_in_owner = true
 width = 12.0
 gradient = SubResource("Gradient_hdi2m")
+joint_mode = 2
+begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Base" type="Sprite2D" parent="."]

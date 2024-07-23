@@ -19,7 +19,6 @@ texture = ExtResource("2_w7v0g")
 
 [node name="ShootingPosition" type="Marker2D" parent="CannonBarrel"]
 position = Vector2(42, -4)
-scale = Vector2(1, 2)
 
 [node name="Trajectory" type="Line2D" parent="CannonBarrel/ShootingPosition"]
 unique_name_in_owner = true

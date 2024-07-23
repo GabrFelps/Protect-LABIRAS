@@ -3,9 +3,11 @@ extends Area2D
 @onready var launchDirection : float;
 @onready var shootingMarker: Marker2D = $CannonBarrel/ShootingPosition;
 @onready var trajectory : Line2D = %Trajectory;
+@onready var firingParticles : PackedScene = preload("res://scenes/firing_particles.tscn");
 
 var launchPower : float = 0.0;
 var maxPoints : int = 125;
+var damage = 1;
 
 @export var launchPowMultiplier: float;
 
@@ -15,9 +17,11 @@ func _ready():
 func _physics_process(delta: float):
 	look_to_mouse($CannonBarrel);
 	_update_trajectory(delta);
+	
+	# Aumenta a força
 	if launchPower > 0:
 		launchPower = min(launchPower + 0.7, 100.0);
-	trajectory.modulate.a = launchPower/45;
+	trajectory.modulate.a = launchPower/45; # estética de aumento de opacidade
 
 ## Input do mouse
 func _input(event: InputEvent) -> void:
@@ -35,6 +39,7 @@ func _input(event: InputEvent) -> void:
 			shoot(launchPower, _shootingPos);
 			launchPower = 0.0;
 			trajectory.hide();
+			emit_firing_particles();
 
 ## Atira uma bola de canhão com a força e posição setadas
 func shoot(launchPower: float, shootingPosition) -> void:
@@ -69,5 +74,13 @@ func _update_trajectory(delta):
 		trajectory.global_rotation = 0;
 		vel.y += gravity * delta;
 		pos += vel * delta;
-		#if pos.y > $Ground.position.y - 25:
-			#break
+		if pos.y > get_node("/root/World/Ground").position.y - 225:
+			break
+			
+## Emite as particulas do tiro do canhão
+func emit_firing_particles():
+	var _particles : CPUParticles2D = firingParticles.instantiate();
+	_particles.one_shot = true;
+	_particles.set_emitting(true);
+	_particles.global_position = Vector2.ZERO
+	shootingMarker.add_child(_particles)

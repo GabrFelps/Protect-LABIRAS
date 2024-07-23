@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://blhxytlkouxk2"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_lirwg"]
+[ext_resource type="Texture2D" uid="uid://dmjh45flc8afq" path="res://icon.svg" id="1_qfkqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yncss"]
+atlas = ExtResource("1_qfkqk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8bst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yncss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7drc"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_lirwg")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n8bst")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(8.04785, 8.30737)
+shape = SubResource("CircleShape2D_n7drc")

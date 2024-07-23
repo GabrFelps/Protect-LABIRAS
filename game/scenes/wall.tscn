@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://tyisjv06sou1"]
 
 [ext_resource type="Script" path="res://scripts/wall.gd" id="1_y88lp"]
-[ext_resource type="Texture2D" uid="uid://dmjh45flc8afq" path="res://icon.svg" id="2_0y60n"]
+[ext_resource type="Texture2D" uid="uid://c73bj86gkhdan" path="res://assets/wall.png" id="2_g3kaw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbhm2"]
 
 [node name="Wall" type="Area2D"]
-scale = Vector2(0.5, 1.5)
+scale = Vector2(2.5, 2.5)
 skew = -0.261799
 script = ExtResource("1_y88lp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_0y60n")
+texture_filter = 1
+texture = ExtResource("2_g3kaw")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 4

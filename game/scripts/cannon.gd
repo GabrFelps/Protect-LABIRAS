@@ -27,19 +27,20 @@ func _physics_process(delta: float):
 func _input(event: InputEvent) -> void:
 	#print(event);
 	if event is InputEventMouseButton:
-		# Aumentar a força da bola
-		if event.is_pressed():
-			trajectory.show();
-			launchPower += 0.1;
-			
-		# Soltar a bola
-		if event.is_released():
-			launchDirection = $CannonBarrel.rotation_degrees;
-			var _shootingPos = shootingMarker.global_position;
-			shoot(launchPower, _shootingPos);
-			launchPower = 0.0;
-			trajectory.hide();
-			emit_firing_particles();
+		if event.button_index == 1:
+			# Aumentar a força da bola
+			if event.is_pressed():
+				trajectory.show();
+				launchPower += 0.1;
+				
+			# Soltar a bola
+			if event.is_released():
+				launchDirection = $CannonBarrel.rotation_degrees;
+				var _shootingPos = shootingMarker.global_position;
+				shoot(launchPower, _shootingPos);
+				launchPower = 0.0;
+				trajectory.hide();
+				emit_firing_particles();
 
 ## Atira uma bola de canhão com a força e posição setadas
 func shoot(launchPower: float, shootingPosition) -> void:

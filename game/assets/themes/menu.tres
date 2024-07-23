@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bni87gmhyxwr2"]
+
+[ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="1_7ydep"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11487"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm1jf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlcb1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1kuc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.831373, 0.831373, 0.831373, 0)
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_7ydep")
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0, 1)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.94902, 0.94902, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.439525, 0.439525, 0, 1)
+Button/constants/outline_size = 5
+Button/fonts/font = ExtResource("1_7ydep")
+Button/styles/focus = SubResource("StyleBoxFlat_11487")
+Button/styles/hover = SubResource("StyleBoxFlat_qm1jf")
+Button/styles/normal = SubResource("StyleBoxFlat_rlcb1")
+Button/styles/pressed = SubResource("StyleBoxFlat_n1kuc")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/fonts/font = ExtResource("1_7ydep")

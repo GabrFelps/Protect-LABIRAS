@@ -1,14 +1,27 @@
 extends Node
-
-
 @onready var enemy_db: Dictionary = {};
 @onready var game_db : Dictionary = {};
+var sprite_dict : Dictionary = {
+	"porco" : preload("res://animations/porco.tres"),
+	"preguica" : preload("res://animations/preguica.tres"),
+	"café" : preload("res://animations/cafe.tres"),
+};
 
 var current_wave : int = 1; 
+var enemy_database : Dictionary = {};
+
 
 func _ready():
 	get_db("enemy_db");
-	get_db("game_db");
+	get_db("game_db"); 
+	
+func get_enemy_struct(enemykey : String) -> Dictionary:
+	return enemy_db.get(enemykey, {})
+	
+func get_enemy_sprite(enemykey: String) -> SpriteFrames:
+	return sprite_dict.get(enemykey)
+	
+	
 	
 ## Pega informações de um banco de dados .csv
 func get_db(page_name: String):

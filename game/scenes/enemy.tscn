@@ -1,43 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blhxytlkouxk2"]
+[gd_scene load_steps=4 format=3 uid="uid://blhxytlkouxk2"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_lirwg"]
-[ext_resource type="Texture2D" uid="uid://tmcll3voop0n" path="res://assets/Enemy/porco.png" id="2_d2x3x"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdvcp"]
-atlas = ExtResource("2_d2x3x")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uoe33"]
-atlas = ExtResource("2_d2x3x")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67w40"]
-atlas = ExtResource("2_d2x3x")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_01371"]
-atlas = ExtResource("2_d2x3x")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_b68u5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bdvcp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uoe33")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_67w40")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_01371")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://bvwc1ii3qg7jy" path="res://animations/porco.tres" id="2_fp2te"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7drc"]
 
@@ -50,7 +14,7 @@ script = ExtResource("1_lirwg")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_b68u5")
+sprite_frames = ExtResource("2_fp2te")
 autoplay = "default"
 frame_progress = 0.935598
 

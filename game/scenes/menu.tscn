@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl0msmitbamhv"]
+
+[ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="1_0iqvr"]
+[ext_resource type="Script" path="res://scripts/utils/menu.gd" id="1_6vca8"]
+[ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="3_kl8k2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl1u1"]
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cym8v"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6vca8")
+
+[node name="Title" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 80.0
+offset_right = 292.0
+offset_bottom = 240.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="Protect" type="Label" parent="Title"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_0iqvr")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "PROTECT"
+
+[node name="Lab" type="Label" parent="Title"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_0iqvr")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "LAB IRAS"
+
+[node name="Panel" type="Panel" parent="Title/Lab"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -14.0
+offset_right = 124.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hl1u1")
+
+[node name="Panel2" type="Panel" parent="Title/Lab"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 124.0
+offset_top = -14.0
+offset_right = 294.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cym8v")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -225.0
+offset_right = 76.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Start" type="Button" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_0iqvr")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "START"
+flat = true
+
+[node name="Tutorial" type="Button" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_0iqvr")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "TUTORIAL
+"
+flat = true
+
+[node name="Exit" type="Button" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_0iqvr")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "EXIT "
+text_direction = 3
+
+[node name="Autores" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 466.0
+offset_right = 122.0
+offset_bottom = 520.0
+theme = ExtResource("1_0iqvr")
+text = "Xamã Cardoso
+João Victor
+Felipe Gabriel"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Image" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.733005, 0.733005, 0.733005, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -477.0
+offset_right = 480.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kl8k2")
+
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]

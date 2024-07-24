@@ -5,6 +5,8 @@ var sprite_dict : Dictionary = {
 	"porco" : preload("res://animations/porco.tres"),
 	"preguica" : preload("res://animations/preguica.tres"),
 	"café" : preload("res://animations/cafe.tres"),
+	"prostiranha" : preload("res://animations/prostiranha.tres"),
+	"formiga" : preload("res://animations/formiga.tres"),
 };
 
 var current_wave : int = 1; 

@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://byillgm1vpgu0"]
+
+[ext_resource type="Texture2D" uid="uid://c3223yl8ny8un" path="res://assets/Enemy/prostiranha.png" id="1_a3t0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fa1m"]
+atlas = ExtResource("1_a3t0h")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mov5t"]
+atlas = ExtResource("1_a3t0h")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ov0w"]
+atlas = ExtResource("1_a3t0h")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f706"]
+atlas = ExtResource("1_a3t0h")
+region = Rect2(128, 128, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fa1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mov5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ov0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f706")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

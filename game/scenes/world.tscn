@@ -1,20 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqknges673yk4"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_dmpuy"]
 [ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="1_eet01"]
 [ext_resource type="PackedScene" uid="uid://tyisjv06sou1" path="res://scenes/wall.tscn" id="2_7jij6"]
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="3_6kyds"]
-[ext_resource type="PackedScene" uid="uid://blhxytlkouxk2" path="res://scenes/enemy.tscn" id="4_mc12l"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_dmpuy")
 
 [node name="Wall" parent="." instance=ExtResource("2_7jij6")]
+texture_filter = 1
 position = Vector2(271, 377)
 
 [node name="Ground" parent="." instance=ExtResource("3_6kyds")]
-position = Vector2(468, 466)
+position = Vector2(516, 515)
 
 [node name="Cannon" parent="." instance=ExtResource("1_eet01")]
-position = Vector2(222, 240)
+position = Vector2(358, 220)
+scale = Vector2(0.87, 0.87)
 
-[node name="Enemy" parent="." instance=ExtResource("4_mc12l")]
-position = Vector2(988, 428)
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.996
+autostart = true
+
+[node name="Top" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(1024, 410)
+
+[node name="Bottom" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(1025, 505)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

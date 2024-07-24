@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://stj2a2ecjpr7"]
+
+[ext_resource type="Texture2D" uid="uid://cih7v8smjltun" path="res://assets/Enemy/formiga.png" id="1_7e3g0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5l1g"]
+atlas = ExtResource("1_7e3g0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e7pe"]
+atlas = ExtResource("1_7e3g0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0dvc"]
+atlas = ExtResource("1_7e3g0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s50t"]
+atlas = ExtResource("1_7e3g0")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5l1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e7pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0dvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s50t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

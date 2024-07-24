@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var my_key : String = ["porco", "café", "preguica"].pick_random();
+@export var my_key : String = ["porco", "café", "preguica", "prostiranha", "formiga"].pick_random();
 @export var MAX_HEALTH : int = 3;
 @export var DAMAGE : int = 20;
 @export var SPEED : int = 12;
@@ -10,9 +10,9 @@ extends CharacterBody2D
 var health : int
 
 func _ready() -> void:
-	health = MAX_HEALTH;
 	velocity.x = -50; # velocidade inicial de tese
 	initialize()
+	health = MAX_HEALTH;
 
 ## Atualiza valores das variáveis conforme o banco de dados
 func initialize():

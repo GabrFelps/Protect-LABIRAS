@@ -12,6 +12,7 @@ var damage = 1;
 @export var launchPowMultiplier: float;
 
 func _ready():
+	update_cannon_damage();
 	trajectory.hide();
 
 func _physics_process(delta: float):
@@ -41,6 +42,11 @@ func _input(event: InputEvent) -> void:
 				launchPower = 0.0;
 				trajectory.hide();
 				emit_firing_particles();
+
+## Atualiza o dano da bala de canhão de acordo com a wave atual
+func update_cannon_damage() -> void:
+	damage = int(Global.game_db[str(Global.current_wave)]["cannon_damage"]);
+	print("cannon damage: ",damage);
 
 ## Atira uma bola de canhão com a força e posição setadas
 func shoot(launchPower: float, shootingPosition) -> void:

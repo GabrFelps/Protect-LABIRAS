@@ -16,7 +16,6 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_fp2te")
 autoplay = "default"
-frame_progress = 0.935598
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

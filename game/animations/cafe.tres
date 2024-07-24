@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ew2u83itp2qd"]
+
+[ext_resource type="Texture2D" uid="uid://xe8qexbpe6ib" path="res://assets/Enemy/cafe.png" id="1_2exln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8sf8"]
+atlas = ExtResource("1_2exln")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cwcl"]
+atlas = ExtResource("1_2exln")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qggp1"]
+atlas = ExtResource("1_2exln")
+region = Rect2(0, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8sf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cwcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qggp1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

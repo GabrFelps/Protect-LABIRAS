@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://de6yh7h4tco7p"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_clp5h"]
+[ext_resource type="SpriteFrames" uid="uid://byillgm1vpgu0" path="res://animations/prostiranha.tres" id="2_w3h2f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
+radius = 2.48514
+height = 17.0933
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_clp5h")
+my_key = "prostiranha"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_w3h2f")
+autoplay = "default"
+frame_progress = 0.6296
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-5, -4)
+scale = Vector2(8.04785, 8.30737)
+shape = SubResource("CapsuleShape2D_0mweq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -117.0
+offset_right = 14.0
+offset_bottom = -94.0

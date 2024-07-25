@@ -1,20 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://blhxytlkouxk2"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_lirwg"]
-[ext_resource type="SpriteFrames" uid="uid://bvwc1ii3qg7jy" path="res://animations/porco.tres" id="2_fp2te"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vpjum"]
+[ext_resource type="SpriteFrames" uid="uid://bvwc1ii3qg7jy" path="res://animations/porco.tres" id="2_dxy7y"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n7drc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
+radius = 2.60939
+height = 10.8338
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_lirwg")
+script = ExtResource("1_vpjum")
+my_key = "porco"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_fp2te")
+sprite_frames = ExtResource("2_dxy7y")
 autoplay = "default"
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -28,5 +31,12 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 1.5708
 scale = Vector2(8.04785, 8.30737)
-shape = SubResource("CircleShape2D_n7drc")
+shape = SubResource("CapsuleShape2D_0mweq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -117.0
+offset_right = 14.0
+offset_bottom = -94.0

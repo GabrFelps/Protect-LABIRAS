@@ -11,8 +11,15 @@ func _ready():
 	buttons_starting_animation();
 
 func _on_start_pressed():
+	for node in get_children():
+		if node is Control:
+			var _tween = get_tree().create_tween();
+			_tween.tween_property(node, "modulate", Color(1.0,1.0,1.0,0.0), 1.0);
+			if node.get_index() == 2:
+				_tween.tween_property($CanvasLayer/Image, "modulate", Color(0.86,0.86,0.86,1.0),0.5)
+				await _tween.finished;
+				
 	get_tree().change_scene_to_file("res://scenes/world.tscn");
-
 
 func _on_tutorial_pressed():
 	pass # Replace with function body.
@@ -27,7 +34,7 @@ func bg_starting_animation():
 	_tween.tween_property (
 		$CanvasLayer/Image,
 		"position",
-		Vector2(-480.0,
+		Vector2(0.0,
 		-480.0),
 		2.0
 	).set_trans(Tween.TRANS_EXPO);

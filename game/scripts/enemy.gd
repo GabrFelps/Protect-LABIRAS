@@ -34,6 +34,7 @@ func initialize():
 	
 ## Toma dano
 func take_damage(attack: Attack):
+	_hit_flash();
 	health -= attack.attack_damage; # diminui a vida
 	if health <= 0:
 		Global.dead_enemies_in_wave += 1;
@@ -44,3 +45,12 @@ func take_damage(attack: Attack):
 
 func _physics_process(delta):
 	move_and_slide(); # movimento
+
+func _hit_flash():
+	var _hit_material = load("res://assets/shaders/hit_flash.gdshader");
+	sprite_node.material = ShaderMaterial.new();
+	sprite_node.material.shader = _hit_material;
+	sprite_node.material.set("shader_parameter/active", true);
+	await (get_tree().create_timer(0.15).timeout);
+	sprite_node.material.set("shader_parameter/active", false);
+

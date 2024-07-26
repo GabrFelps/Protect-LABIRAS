@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var DAMAGE : int = 20;
 @export var SPEED : int = 12;
 @export var POINTS : int = 10;
+var wave_min : int;
 @onready var sprite_node : AnimatedSprite2D = get_node("Sprite"); 
 @onready var label = $Label
 
@@ -13,7 +14,7 @@ signal all_enemies_died;
 var health : int
 
 func _ready() -> void:
-
+	wave_min = Global.game_db.get(my_key).get("wave_min");
 	Global.enemyNode = self;
 	initialize()
 	velocity.x = -SPEED; # velocidade inicial de tese

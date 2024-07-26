@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy = preload("res://scenes/enemies/enemy.tscn")
+var enemy = preload("res://scenes/enemies/porco.tscn")
 @onready var top = $Top
 @onready var bottom = $Bottom
 

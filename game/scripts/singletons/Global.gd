@@ -1,13 +1,13 @@
 extends Node
 @onready var enemy_db: Dictionary = {};
 @onready var game_db : Dictionary = {};
-var sprite_dict : Dictionary = {
-	"porco" : preload("res://animations/porco.tres"),
-	"preguica" : preload("res://animations/preguica.tres"),
-	"café" : preload("res://animations/cafe.tres"),
-	"prostiranha" : preload("res://animations/prostiranha.tres"),
-	"formiga" : preload("res://animations/formiga.tres"),
-};
+#var sprite_dict : Dictionary = {
+	#"porco" : preload("res://animations/porco.tres"),
+	#"preguica" : preload("res://animations/preguica.tres"),
+	#"café" : preload("res://animations/cafe.tres"),
+	#"prostiranha" : preload("res://animations/prostiranha.tres"),
+	#"formiga" : preload("res://animations/formiga.tres"),
+#};
 
 # referência ao no do inimigo
 var enemyNode = null;
@@ -34,14 +34,14 @@ func _process(delta) -> void:
 func get_enemy_struct(enemykey : String) -> Dictionary:
 	return enemy_db.get(enemykey, {})
 	
-func get_enemy_sprite(enemykey: String) -> SpriteFrames:
-	return sprite_dict.get(enemykey)
+#func get_enemy_sprite(enemykey: String) -> SpriteFrames:
+	#return sprite_dict.get(enemykey)
 	
 ## função para mudar de wave
 func change_wave() -> void:
-	dead_enemies_in_wave = 0
+	dead_enemies_in_wave = 0;
 	current_wave = next_wave(game_db);
-	print("current wave: ", current_wave)
+	print("current wave: ", current_wave);
 	
 ## função que retorna o valor da próxima wave
 func next_wave(dict : Dictionary) -> int:

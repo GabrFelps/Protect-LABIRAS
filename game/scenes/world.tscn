@@ -21,7 +21,7 @@ position = Vector2(358, 220)
 scale = Vector2(0.87, 0.87)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.996
+wait_time = 4.0
 autostart = true
 
 [node name="Top" type="Marker2D" parent="." groups=["spawn"]]

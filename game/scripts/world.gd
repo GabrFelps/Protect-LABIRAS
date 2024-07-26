@@ -1,7 +1,5 @@
 extends Node2D
 
-var enemy = preload("res://scenes/enemies/porco.tscn")
-
 # dicionário de cenas de inimigos
 var enemies : Dictionary = {
 	"porco"            : preload("res://scenes/enemies/porco.tscn"),
@@ -19,9 +17,20 @@ var enemies : Dictionary = {
 
 @onready var top = $Top
 @onready var bottom = $Bottom
+@onready var spawn_timer = get_node("SpawnTimer");
 
 func _ready():
+	Global.levelNode = self;
 	move_camera_to_place();
+
+func _process(delta) -> void:
+	stop_spawn_timer();
+
+## função para pausar o timer quando a quantidade de inimigos instanciados cheagr ao limite
+func stop_spawn_timer() -> void:
+	#verificando se ja foram instanciados todos inimigos da wave atual
+	if Global.enemies_already_instatiated == Global.max_enemy_per_wave:
+		spawn_timer.stop();
 
 func _get_random_position() -> Vector2:
 	return Vector2(top.global_position.x, randf_range(top.global_position.y, bottom.global_position.y))
@@ -42,6 +51,7 @@ func _on_spawn_timer_timeout():
 	if Global.enemyNode.wave_min <= Global.current_wave:
 		var nodes = get_tree().get_nodes_in_group("spawn")
 		var node = nodes[randi() % nodes.size()]
+		Global.enemies_already_instatiated += 1;     # incrementa a quantiade de inimigos instanciados
 		return
 	# caso não estja, remove o inimigo da cena
 	Global.enemyNode.queue_free();
@@ -59,4 +69,4 @@ func move_camera_to_place():
 	_cameraPosTween.tween_property($Camera2D, "position", Vector2(654, 140), 3).set_trans(Tween.TRANS_QUART);
 	_bgTween = _bgTween.tween_property($CanvasLayer/TextureRect, "position", Vector2(-480,-540), 3).set_trans(Tween.TRANS_QUART);
 	
-	
+

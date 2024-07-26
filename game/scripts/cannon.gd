@@ -7,12 +7,12 @@ extends Area2D
 
 var launchPower : float = 0.0;
 var maxPoints : int = 125;
-var damage = 1;
+var damage = 10;
 
 @export var launchPowMultiplier: float;
 
 func _ready():
-	update_cannon_damage();
+	#update_cannon_damage();
 	trajectory.hide();
 
 func _physics_process(delta: float):

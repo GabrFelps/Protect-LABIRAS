@@ -29,9 +29,7 @@ func initialize():
 	DAMAGE = int(enemy_struct["damage"]);
 	SPEED = int(enemy_struct["speed"]);
 	POINTS = int(enemy_struct["points"]);
-	#sprite_node.sprite_frames = Global.get_enemy_sprite(my_key)
-	#sprite_node.play()
-	#print(my_key, " velocity: ", SPEED)
+	
 	
 ## Toma dano
 func take_damage(attack: Attack):

@@ -29,5 +29,6 @@ func take_damage(attack : Attack):
 	health -= attack.attack_damage;
 	if health <= 0:
 		pass
-	
-	
+
+func _on_hurt_box_area_entered(area):
+	print("inimigo entrou com força")

@@ -36,7 +36,7 @@ scale = Vector2(8.04785, 8.30737)
 shape = SubResource("CapsuleShape2D_0mweq")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -26.0
-offset_top = -117.0
-offset_right = 14.0
-offset_bottom = -94.0
+offset_left = -23.0
+offset_top = -100.0
+offset_right = 17.0
+offset_bottom = -77.0

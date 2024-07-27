@@ -18,9 +18,10 @@ func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
 	initialize()
-	velocity.x = -120;
+	velocity.x = -SPEED;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
+	
 
 ## Atualiza valores das variáveis conforme o banco de dados
 func initialize():
@@ -60,3 +61,4 @@ func init_explosion() -> void:
 	_particle.position = global_position;
 	_particle.rotation = global_rotation;
 	_particle.emitting = true;
+	add_child(_particle);

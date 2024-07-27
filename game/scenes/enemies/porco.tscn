@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://blhxytlkouxk2"]
+[gd_scene load_steps=6 format=3 uid="uid://blhxytlkouxk2"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_g2db5"]
 [ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_0v3b5"]
 [ext_resource type="Material" uid="uid://5uyelryd28li" path="res://assets/shaders/hit_flash.tres" id="2_ag2v1"]
 [ext_resource type="SpriteFrames" uid="uid://bvwc1ii3qg7jy" path="res://animations/porco.tres" id="3_8vhu3"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70d1s"]
-radius = 45.0
-height = 90.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
 radius = 2.60939
@@ -28,11 +24,8 @@ sprite_frames = ExtResource("3_8vhu3")
 autoplay = "default"
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CapsuleShape2D_70d1s")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 3
@@ -44,7 +37,7 @@ scale = Vector2(8.04785, 8.30737)
 shape = SubResource("CapsuleShape2D_0mweq")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -62.0
-offset_right = 21.0
-offset_bottom = -39.0
+offset_left = -20.0
+offset_top = -97.0
+offset_right = 20.0
+offset_bottom = -74.0

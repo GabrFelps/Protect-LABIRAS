@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var deathParticle : PackedScene;
 @export var my_key : String
 @export var MAX_HEALTH : int = 3;
 @export var DAMAGE : int = 20;
@@ -17,7 +18,7 @@ func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
 	initialize()
-	velocity.x = -SPEED;
+	velocity.x = -120;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
 
@@ -53,3 +54,9 @@ func _hit_flash():
 	await (get_tree().create_timer(0.15).timeout);
 	sprite_node.material.set("shader_parameter/active", false);
 
+## função para acionar partícula de explosão
+func init_explosion() -> void:
+	var _particle = deathParticle.instantiate();
+	_particle.position = global_position;
+	_particle.rotation = global_rotation;
+	_particle.emitting = true;

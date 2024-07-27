@@ -18,12 +18,15 @@ var enemies : Dictionary = {
 @onready var top = $Top
 @onready var bottom = $Bottom
 @onready var spawn_timer = get_node("SpawnTimer");
+@onready var label_wave = $CanvasLayer/Label
 
 func _ready():
 	Global.levelNode = self;
 	move_camera_to_place();
 
 func _process(delta) -> void:
+	# atualizando wave no label
+	label_wave.text = "Current Wave: " + str(Global.current_wave);
 	stop_spawn_timer();
 
 ## função para pausar o timer quando a quantidade de inimigos instanciados cheagr ao limite
@@ -37,26 +40,27 @@ func _get_random_position() -> Vector2:
 	
 ## função para spawnar inimigos
 func _on_spawn_timer_timeout():
-	# array de keys do dicionionário de inimigos
-	var _keys_enemies = enemies.keys();
-	# seleciona um indice aleatório no array de chaves de inimigos
-	var _enemy = randi_range(0, _keys_enemies.size() - 1);
-	# guarda instancia de um inimigo aleatório selecionado 
-	var enemy_instance = enemies.get(_keys_enemies[_enemy]).instantiate();
-	# define a posição aleatória de nascimento do inimigo
-	enemy_instance.global_position = _get_random_position()
-	# adiciona com a instância como filha
-	add_child(enemy_instance)
-	# verifica se a wave minima do inimigo instanciado esta de acordo com a wave atual
-	if Global.enemyNode.wave_min <= Global.current_wave:
-		var nodes = get_tree().get_nodes_in_group("spawn")
-		var node = nodes[randi() % nodes.size()]
-		Global.enemies_already_instatiated += 1;     # incrementa a quantiade de inimigos instanciados
-		return
-	# caso não estja, remove o inimigo da cena
-	Global.enemyNode.queue_free();
-	# e repete todo o processo até que instancie um inimigo que possue wave minima menor ou igual a atual wave
-	_on_spawn_timer_timeout();
+	if Global.enemies_already_instatiated < Global.max_enemy_per_wave:
+		# array de keys do dicionionário de inimigos
+		var _keys_enemies = enemies.keys();
+		# seleciona um indice aleatório no array de chaves de inimigos
+		var _enemy = randi_range(0, _keys_enemies.size() - 1);
+		# guarda instancia de um inimigo aleatório selecionado 
+		var enemy_instance = enemies.get(_keys_enemies[_enemy]).instantiate();
+		# define a posição aleatória de nascimento do inimigo
+		enemy_instance.global_position = _get_random_position()
+		# adiciona com a instância como filha
+		add_child(enemy_instance)
+		# verifica se a wave minima do inimigo instanciado esta de acordo com a wave atual
+		if Global.enemyNode.wave_min <= Global.current_wave:
+			var nodes = get_tree().get_nodes_in_group("spawn")
+			var node = nodes[randi() % nodes.size()]
+			Global.enemies_already_instatiated += 1;     # incrementa a quantiade de inimigos instanciados
+			return
+		# caso não estja, remove o inimigo da cena
+		Global.enemyNode.queue_free();
+		# e repete todo o processo até que instancie um inimigo que possue wave minima menor ou igual a atual wave
+		_on_spawn_timer_timeout();
 
 func move_camera_to_place():
 	$CanvasLayer/TextureRect.global_position = Vector2(0 ,-480);

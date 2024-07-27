@@ -11,7 +11,7 @@ func _ready():
 	restore_health();
 	health = MAX_HEALTH;
 
-# Atualiza a vida máxima do muro com base no banco de dados do jogo
+## Atualiza a vida máxima do muro com base no banco de dados do jogo
 func update_max_health():
 	MAX_HEALTH = int(Global.game_db[str(Global.current_wave)]["wall_health"]);
 	print("wall health: ", MAX_HEALTH);

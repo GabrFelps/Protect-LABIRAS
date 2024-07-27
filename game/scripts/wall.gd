@@ -7,6 +7,7 @@ extends Area2D
 
 
 func _ready():
+	Global.update_game_properties.connect(update_max_health);
 	update_max_health();
 	restore_health();
 	health = MAX_HEALTH;

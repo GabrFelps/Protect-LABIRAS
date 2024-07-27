@@ -7,8 +7,10 @@ var enemyNode = null;
 # referência ao level
 var levelNode = null;
 
+# signal para atualizar as propiedades do jogo
+signal update_game_properties;
 # array que ja foram iniciadas
-var waves_already_started : Array = ["1"];
+var waves : Array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 # inimigos ja instanciados
 var enemies_already_instatiated = 0;
 
@@ -24,10 +26,16 @@ func _ready():
 	get_db("game_db"); 
 
 func _process(delta) -> void:
+	update_properties();
 	if enemyNode != null:
 		enemyNode.all_enemies_died.connect(change_wave);
 		enemyNode = null;
 	
+## função que verifica quando pode ser atualizada as propiedades do jogo
+func update_properties() -> void:
+	if current_wave in waves:
+		emit_signal("update_game_properties");
+
 func get_enemy_struct(enemykey : String) -> Dictionary:
 	return enemy_db.get(enemykey, {})
 	

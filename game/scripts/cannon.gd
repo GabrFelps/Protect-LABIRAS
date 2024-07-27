@@ -12,6 +12,7 @@ var damage = 1;
 @export var launchPowMultiplier: float;
 
 func _ready():
+	Global.update_game_properties.connect(update_cannon_damage);
 	update_cannon_damage();
 	trajectory.hide();
 

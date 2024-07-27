@@ -7,8 +7,10 @@ var enemyNode = null;
 # referência ao level
 var levelNode = null;
 
+# signal para atualizar as propiedades do jogo
+signal update_game_properties;
 # array que ja foram iniciadas
-var waves_already_started : Array = ["1"];
+var waves : Array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 # inimigos ja instanciados
 var enemies_already_instatiated = 0;
 
@@ -19,23 +21,29 @@ var max_enemy_per_wave : int;
 var dead_enemies_in_wave: int = 0;
 
 func _ready():
-	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));	
+	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
 	get_db("enemy_db");
 	get_db("game_db"); 
 
 func _process(delta) -> void:
+	update_properties();
 	if enemyNode != null:
 		enemyNode.all_enemies_died.connect(change_wave);
 		enemyNode = null;
 	
+## função que verifica quando pode ser atualizada as propiedades do jogo
+func update_properties() -> void:
+	if current_wave in waves:
+		emit_signal("update_game_properties");
+
 func get_enemy_struct(enemykey : String) -> Dictionary:
 	return enemy_db.get(enemykey, {})
 	
 ## função para mudar de wave
 func change_wave() -> void:
 	dead_enemies_in_wave = 0;
-	current_wave = next_wave(game_db);
-	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));	
+	current_wave += 1;
+	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
 	# atualiza o valor de inimigos instanciados
 	enemies_already_instatiated = 0;
 	start_spawn_timer();
@@ -46,17 +54,7 @@ func change_wave() -> void:
 func start_spawn_timer() -> void:
 	levelNode.spawn_timer.start();
 
-## função que retorna o valor da próxima wave
-func next_wave(dict : Dictionary) -> int:
-	var _waves_started = waves_already_started;
-	var _keys_of_dict = dict.keys();
-	for key in _keys_of_dict:
-		if key in _waves_started:
-			continue;
-		waves_already_started.append(key);
-		return int(key);
-	return 0;
-	
+
 ## Pega informações de um banco de dados .csv
 func get_db(page_name: String):
 	# arquivo

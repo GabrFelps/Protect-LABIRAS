@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqknges673yk4"]
+[gd_scene load_steps=8 format=3 uid="uid://bqknges673yk4"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_dmpuy"]
 [ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="1_eet01"]
 [ext_resource type="PackedScene" uid="uid://tyisjv06sou1" path="res://scenes/wall.tscn" id="2_7jij6"]
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="3_6kyds"]
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="5_ljoss"]
+[ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="6_ld3gx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6xx8x"]
+font = ExtResource("6_ld3gx")
+font_size = 32
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_dmpuy")
@@ -49,5 +54,17 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_ljoss")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 385.0
+offset_top = -534.0
+offset_right = 558.0
+offset_bottom = -489.0
+grow_vertical = 0
+size_flags_horizontal = 8
+label_settings = SubResource("LabelSettings_6xx8x")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

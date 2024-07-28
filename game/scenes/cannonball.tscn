@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4620"]
 
 [node name="Cannonball" type="RigidBody2D"]
-mass = 0.5
+gravity_scale = 1.36
 center_of_mass_mode = 1
 script = ExtResource("1_3k6lk")
 

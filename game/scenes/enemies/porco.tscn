@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://blhxytlkouxk2"]
+[gd_scene load_steps=8 format=3 uid="uid://blhxytlkouxk2"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_g2db5"]
 [ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_0v3b5"]
 [ext_resource type="Material" uid="uid://5uyelryd28li" path="res://assets/shaders/hit_flash.tres" id="2_ag2v1"]
 [ext_resource type="SpriteFrames" uid="uid://bvwc1ii3qg7jy" path="res://animations/porco.tres" id="3_8vhu3"]
+[ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="5_acla6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8tnm"]
+radius = 23.0
+height = 98.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
 radius = 2.60939
 height = 10.8338
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_g2db5")
 deathParticle = ExtResource("2_0v3b5")
@@ -23,9 +28,11 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_8vhu3")
 autoplay = "default"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" parent="." instance=ExtResource("5_acla6")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g8tnm")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 3
@@ -41,3 +48,5 @@ offset_left = -20.0
 offset_top = -97.0
 offset_right = 20.0
 offset_bottom = -74.0
+
+[editable path="Hitbox"]

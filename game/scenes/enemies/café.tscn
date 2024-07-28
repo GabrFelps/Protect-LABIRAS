@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://3goxf43o3vq1"]
+[gd_scene load_steps=6 format=3 uid="uid://3goxf43o3vq1"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_1omfd"]
 [ext_resource type="SpriteFrames" uid="uid://ew2u83itp2qd" path="res://animations/cafe.tres" id="2_unns6"]
+[ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="3_ppo4d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
 radius = 2.98216
 height = 12.519
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n47el"]
+radius = 27.0
+height = 110.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -20,12 +25,6 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_unns6")
 autoplay = "default"
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -35,8 +34,16 @@ position = Vector2(-4, 1)
 scale = Vector2(8.04785, 8.30737)
 shape = SubResource("CapsuleShape2D_0mweq")
 
+[node name="Hitbox" parent="." instance=ExtResource("3_ppo4d")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-4, 0)
+shape = SubResource("CapsuleShape2D_n47el")
+
 [node name="Label" type="Label" parent="."]
 offset_left = -23.0
 offset_top = -100.0
 offset_right = 17.0
 offset_bottom = -77.0
+
+[editable path="Hitbox"]

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://531jr2bqc4ln"]
+[gd_scene load_steps=6 format=3 uid="uid://531jr2bqc4ln"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vl76v"]
 [ext_resource type="SpriteFrames" uid="uid://cxhykn42m8x68" path="res://animations/preguica.tres" id="2_p22va"]
+[ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="3_opqbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlluq"]
 size = Vector2(12.5797, 12.9425)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjfcn"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -18,12 +21,6 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_p22va")
 autoplay = "default"
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -40,3 +37,12 @@ offset_left = -26.0
 offset_top = -117.0
 offset_right = 14.0
 offset_bottom = -94.0
+
+[node name="Hitbox" parent="." instance=ExtResource("3_opqbb")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 13)
+scale = Vector2(5.7204, 5.7204)
+shape = SubResource("RectangleShape2D_sjfcn")
+
+[editable path="Hitbox"]

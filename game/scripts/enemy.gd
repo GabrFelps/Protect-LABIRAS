@@ -18,7 +18,7 @@ func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
 	initialize()
-	velocity.x = -SPEED;
+	velocity.x = -SPEED - 100;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
 	
@@ -38,11 +38,7 @@ func take_damage(attack: Attack):
 	_hit_flash();
 	health -= attack.attack_damage; # diminui a vida
 	if health <= 0:
-		Global.dead_enemies_in_wave += 1;
-		# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
-		if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
-			emit_signal("all_enemies_died");
-		queue_free();
+		die();
 
 func _physics_process(delta):
 	move_and_slide(); # movimento
@@ -55,10 +51,19 @@ func _hit_flash():
 	await (get_tree().create_timer(0.15).timeout);
 	sprite_node.material.set("shader_parameter/active", false);
 
+func die():
+	Global.dead_enemies_in_wave += 1;
+		# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
+	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
+		emit_signal("all_enemies_died");
+	init_explosion();
+	queue_free();
+
 ## função para acionar partícula de explosão
 func init_explosion() -> void:
 	var _particle = deathParticle.instantiate();
-	_particle.position = global_position;
-	_particle.rotation = global_rotation;
+	get_parent().add_child(_particle);
+	_particle.global_position = self.global_position;
+	_particle.global_rotation = self.global_rotation;
 	_particle.emitting = true;
-	add_child(_particle);
+	

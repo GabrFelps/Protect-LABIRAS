@@ -5,11 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://tyisjv06sou1" path="res://scenes/wall.tscn" id="2_7jij6"]
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="3_6kyds"]
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="5_ljoss"]
-[ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="6_ld3gx"]
+[ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="6_m7m7j"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_6xx8x"]
-font = ExtResource("6_ld3gx")
+[sub_resource type="LabelSettings" id="LabelSettings_5i732"]
 font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_dmpuy")
@@ -65,6 +66,8 @@ offset_right = 558.0
 offset_bottom = -489.0
 grow_vertical = 0
 size_flags_horizontal = 8
-label_settings = SubResource("LabelSettings_6xx8x")
+theme = ExtResource("6_m7m7j")
+text = "zaper"
+label_settings = SubResource("LabelSettings_5i732")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

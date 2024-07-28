@@ -26,7 +26,6 @@ func _ready():
 	get_db("game_db"); 
 
 func _process(delta) -> void:
-	update_properties();
 	if enemyNode != null:
 		enemyNode.all_enemies_died.connect(change_wave);
 		enemyNode = null;
@@ -43,6 +42,7 @@ func get_enemy_struct(enemykey : String) -> Dictionary:
 func change_wave() -> void:
 	dead_enemies_in_wave = 0;
 	current_wave += 1;
+	update_properties();
 	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
 	# atualiza o valor de inimigos instanciados
 	enemies_already_instatiated = 0;

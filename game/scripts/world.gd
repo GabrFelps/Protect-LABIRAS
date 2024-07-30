@@ -32,7 +32,6 @@ func _process(delta) -> void:
 	label_wave.text = "Current Wave: " + str(Global.current_wave);
 	stop_spawn_timer();
 
-
 ## função para pausar o timer quando a quantidade de inimigos instanciados cheagr ao limite
 func stop_spawn_timer() -> void:
 	#verificando se ja foram instanciados todos inimigos da wave atual
@@ -57,7 +56,7 @@ func _on_spawn_timer_timeout():
 		# define a posição aleatória de nascimento do inimigo
 		enemy_instance.global_position = _get_random_position()
 		# adiciona com a instância como filha
-		add_child(enemy_instance)
+		$Enemies.add_child(enemy_instance);
 		# verifica se a wave minima do inimigo instanciado esta de acordo com a wave atual
 		if Global.enemyNode.wave_min <= Global.current_wave:
 			var nodes = get_tree().get_nodes_in_group("spawn")

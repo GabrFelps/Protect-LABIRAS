@@ -18,7 +18,7 @@ var waves : Array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 # inimigos ja instanciados
 var enemies_already_instatiated = 0;
 
-var current_wave : int = 5; 
+var current_wave : int = 1; 
 var enemy_database : Dictionary = {};
 var base_number_enemies : int = 8;
 var max_enemy_per_wave : int;

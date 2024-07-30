@@ -22,13 +22,13 @@ func _physics_process(delta: float):
 	
 	# Aumenta a força
 	if launchPower > 0:
-		launchPower = min(launchPower + 0.7, 100.0);
+		launchPower = min(launchPower + 0.85, 100.0);
 	trajectory.modulate.a = launchPower/45; # estética de aumento de opacidade
 
 ## Input do mouse
 func _input(event: InputEvent) -> void:
 	#print(event);
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and is_physics_processing():
 		if event.button_index == 1:
 			# Aumentar a força da bola
 			if event.is_pressed():
@@ -64,7 +64,7 @@ func shoot(launchPower: float, shootingPosition) -> void:
 	
 	# Aplica uma força na bola de canhão e adiciona ela no mundo
 	_cannonball.apply_central_impulse(Vector2(_x * launchPower, _y * launchPower));
-	get_node("/root/World").add_child(_cannonball);
+	get_parent().add_child(_cannonball);
 
 ## Faz um node "olhar" para o mouse
 func look_to_mouse(node: Node):
@@ -82,7 +82,7 @@ func _update_trajectory(delta):
 		trajectory.global_rotation = 0;
 		vel.y += gravity * delta;
 		pos += vel * delta;
-		if pos.y > get_node("/root/World/Ground").position.y - 225:
+		if pos.y > get_parent().get_node("Ground").position.y - 225:
 			break
 			
 ## Emite as particulas do tiro do canhão

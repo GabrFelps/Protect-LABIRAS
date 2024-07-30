@@ -2,6 +2,9 @@ extends Node
 @onready var enemy_db: Dictionary = {};
 @onready var game_db : Dictionary = {};
 
+# tutorial controls
+var showingPopUp: bool = false
+
 # referência ao no do inimigo
 var enemyNode = null;
 # referência ao level
@@ -9,6 +12,7 @@ var levelNode = null;
 
 # signal para atualizar as propiedades do jogo
 signal update_game_properties;
+signal wave_changed;
 # array que ja foram iniciadas
 var waves : Array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 # inimigos ja instanciados
@@ -35,8 +39,9 @@ func update_properties() -> void:
 	if current_wave in waves:
 		emit_signal("update_game_properties");
 
+## Pega uma chave de valores do arquivo .csv para o inimigo
 func get_enemy_struct(enemykey : String) -> Dictionary:
-	return enemy_db.get(enemykey, {})
+	return enemy_db.get(enemykey, {});
 	
 ## função para mudar de wave
 func change_wave() -> void:
@@ -49,6 +54,7 @@ func change_wave() -> void:
 	start_spawn_timer();
 	print("current wave: ", current_wave);
 	print("Max enemies in wave: ", max_enemy_per_wave);
+	emit_signal("wave_changed");
 	
 ## função para iniciar o spawn_timer quando mudar de uma wave para a outra
 func start_spawn_timer() -> void:

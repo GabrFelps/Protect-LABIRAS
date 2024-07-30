@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://531jr2bqc4ln"]
+[gd_scene load_steps=7 format=3 uid="uid://531jr2bqc4ln"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vl76v"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_i1lbx"]
 [ext_resource type="SpriteFrames" uid="uid://cxhykn42m8x68" path="res://animations/preguica.tres" id="2_p22va"]
 [ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="3_opqbb"]
 
@@ -14,6 +15,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_vl76v")
+deathParticle = ExtResource("2_i1lbx")
 my_key = "preguica"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -21,6 +23,7 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_p22va")
 autoplay = "default"
+frame_progress = 0.718197
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2

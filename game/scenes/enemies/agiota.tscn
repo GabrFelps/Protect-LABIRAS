@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://p146lm18vr6t"]
+[gd_scene load_steps=4 format=3 uid="uid://p146lm18vr6t"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l7l3k"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_mbe1m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
 radius = 2.48514
@@ -11,6 +12,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_l7l3k")
+deathParticle = ExtResource("2_mbe1m")
 my_key = "agiota"
 
 [node name="ColorRect" type="ColorRect" parent="."]

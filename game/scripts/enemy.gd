@@ -18,7 +18,7 @@ func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
 	initialize()
-	velocity.x = -SPEED - 100;
+	velocity.x = -SPEED;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
 	

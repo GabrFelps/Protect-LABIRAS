@@ -22,25 +22,45 @@ func _on_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/world.tscn");
 
 func _on_tutorial_pressed():
-	pass # Replace with function body.
-
+	for node in get_children():
+		if node is Control:
+			var _tween = get_tree().create_tween();
+			_tween.tween_property(node, "modulate", Color(1.0,1.0,1.0,0.0), .7);
+			if node.get_index() == 2:
+				_tween.tween_property($CanvasLayer/Image, "modulate", Color(0.86,0.86,0.86,1.0),0.5)
+				await _tween.finished;
+	bg_up_animation();
+	await finish;
+	get_tree().change_scene_to_file("res://scenes/tutorial.tscn");
 
 func _on_exit_pressed():
 	get_tree().quit();
 
 func bg_starting_animation():
-	$CanvasLayer/Image.position.y += 420;
+	$CanvasLayer/Image.position.y = -60;
 	var _tween = get_tree().create_tween();
 	_tween.tween_property (
 		$CanvasLayer/Image,
 		"position",
 		Vector2(0.0,
 		-480.0),
-		2.0
-	).set_trans(Tween.TRANS_EXPO);
+		1.5
+	).set_trans(Tween.TRANS_CUBIC);
 	await _tween.finished
 	emit_signal("finish");
-	
+
+func bg_up_animation():
+	var _tween = get_tree().create_tween();
+	_tween.tween_property (
+		$CanvasLayer/Image,
+		"position",
+		Vector2(0.0,
+		-60.0),
+		2.0
+	).set_trans(Tween.TRANS_QUINT);
+	await _tween.finished
+	emit_signal("finish");
+
 func blank_nodes():
 	for node in get_children():
 		for leaf in node.get_children():

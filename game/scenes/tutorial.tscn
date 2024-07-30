@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwa22ru84wppf"]
+
+[ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="1_g71e4"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_hm2lk"]
+[ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="2_8wb2e"]
+[ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="3_imsqb"]
+[ext_resource type="Texture2D" uid="uid://enf0ph50xtdw" path="res://assets/feno.png" id="3_ixcbn"]
+[ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="4_qpchs"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_hm2lk")
+
+[node name="Ground" parent="." instance=ExtResource("1_g71e4")]
+position = Vector2(516, 515)
+
+[node name="Haystack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(380, 385)
+scale = Vector2(4.37432, 4.37432)
+texture = ExtResource("3_ixcbn")
+
+[node name="Cannon" parent="." instance=ExtResource("2_8wb2e")]
+position = Vector2(358, 220)
+scale = Vector2(0.87, 0.87)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(654, 140)
+zoom = Vector2(0.67, 0.67)
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+modulate = Color(0.860369, 0.860369, 0.860369, 1)
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -480.0
+offset_right = 960.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_imsqb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_qpchs")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "WELCOME TO PROTECT LABIRAS!!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,17 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwa22ru84wppf"]
+[gd_scene load_steps=15 format=3 uid="uid://cwa22ru84wppf"]
 
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="1_g71e4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_hm2lk"]
 [ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="2_8wb2e"]
+[ext_resource type="Script" path="res://scripts/Target.gd" id="3_a06u6"]
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="3_imsqb"]
 [ext_resource type="Texture2D" uid="uid://enf0ph50xtdw" path="res://assets/feno.png" id="3_ixcbn"]
+[ext_resource type="Texture2D" uid="uid://rpsi1ko6fy3i" path="res://assets/target.png" id="3_tw33x"]
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="4_qpchs"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="4_yta0n"]
+[ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="7_h3ngq"]
 
-[node name="Tutorial" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pu171"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6glg5"]
+line_spacing = 4.0
+font = ExtResource("7_h3ngq")
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c1m2"]
+bg_color = Color(0.223103, 0.223103, 0.223103, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocmwr"]
+bg_color = Color(0.564962, 0.564962, 0.564961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 5.0
+
+[node name="World" type="Node2D"]
 script = ExtResource("1_hm2lk")
 
 [node name="Ground" parent="." instance=ExtResource("1_g71e4")]
 position = Vector2(516, 515)
+
+[node name="Target" type="Area2D" parent="."]
+position = Vector2(1184, 431)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_a06u6")
+deathParticle = ExtResource("4_yta0n")
+
+[node name="Sprite" type="Sprite2D" parent="Target"]
+texture_filter = 1
+scale = Vector2(2.45329, 2.45329)
+texture = ExtResource("3_tw33x")
+
+[node name="Hurtbox" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Hurtbox"]
+scale = Vector2(-7.11696, -7.11696)
+shape = SubResource("CircleShape2D_pu171")
 
 [node name="Haystack" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -45,8 +94,28 @@ texture = ExtResource("3_imsqb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Container" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 46.0
+offset_right = 300.0
+offset_bottom = 311.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Container"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/Panel"]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,6 +124,25 @@ grow_vertical = 2
 theme = ExtResource("4_qpchs")
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "WELCOME TO PROTECT LABIRAS!!"
+text = "TO SHOOT WITH THE CANNON, AIM AND SHOOT USING YOUR MOUSE.
+CONTROL THE POWER OF THE SHOT WHEN HOLDING THE LEFT MOUSE BUTTON, RELEASE IT TO SHOOT."
+label_settings = SubResource("LabelSettings_6glg5")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Next" type="Button" parent="CanvasLayer/Container"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 45)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("4_qpchs")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_1c1m2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1c1m2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ocmwr")
+text = "NEXT"
+
+[connection signal="pressed" from="CanvasLayer/Container/Next" to="." method="_on_next_pressed"]

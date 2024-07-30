@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk11gw05p2oek"]
+[gd_scene load_steps=4 format=3 uid="uid://bk11gw05p2oek"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ilq8d"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_tdr6l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
 radius = 2.48514
@@ -11,6 +12,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_ilq8d")
+deathParticle = ExtResource("2_tdr6l")
 my_key = "corrupto"
 
 [node name="ColorRect" type="ColorRect" parent="."]

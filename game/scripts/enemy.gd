@@ -53,7 +53,7 @@ func _hit_flash():
 
 func die():
 	Global.dead_enemies_in_wave += 1;
-		# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
+	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
 	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
 		emit_signal("all_enemies_died");
 	init_explosion();

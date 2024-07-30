@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://3goxf43o3vq1"]
+[gd_scene load_steps=7 format=3 uid="uid://3goxf43o3vq1"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_1omfd"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_38yxn"]
 [ext_resource type="SpriteFrames" uid="uid://ew2u83itp2qd" path="res://animations/cafe.tres" id="2_unns6"]
 [ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="3_ppo4d"]
 
@@ -17,6 +18,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_1omfd")
+deathParticle = ExtResource("2_38yxn")
 my_key = "café"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

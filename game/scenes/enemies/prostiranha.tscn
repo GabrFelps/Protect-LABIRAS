@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://de6yh7h4tco7p"]
+[gd_scene load_steps=7 format=3 uid="uid://de6yh7h4tco7p"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_clp5h"]
+[ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_5urdq"]
 [ext_resource type="SpriteFrames" uid="uid://byillgm1vpgu0" path="res://animations/prostiranha.tres" id="2_w3h2f"]
 [ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="3_5tfpu"]
 
@@ -17,6 +18,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_clp5h")
+deathParticle = ExtResource("2_5urdq")
 my_key = "prostiranha"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

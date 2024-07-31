@@ -29,7 +29,7 @@ func _ready():
 	get_db("enemy_db");
 	get_db("game_db"); 
 
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	if enemyNode != null:
 		enemyNode.all_enemies_died.connect(change_wave);
 		enemyNode = null;

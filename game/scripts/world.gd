@@ -1,5 +1,7 @@
 extends Node2D
 
+signal camera_finished;
+
 # dicionário de cenas de inimigos
 var enemies : Dictionary = {
 	"porco"            : preload("res://scenes/enemies/porco.tscn"),
@@ -23,11 +25,13 @@ var enemies : Dictionary = {
 
 func _ready():
 	Global.levelNode = self;
-	move_camera_to_place();
 	Global.wave_changed.connect(show_wave);
+	move_camera_to_place();
+	await camera_finished;
+	show_hud($CanvasLayer/Label);
+	show_hud($CanvasLayer/ProgressBar);
 
-
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	# atualizando wave no label
 	label_wave.text = "Current Wave: " + str(Global.current_wave);
 	stop_spawn_timer();
@@ -80,7 +84,17 @@ func move_camera_to_place():
 	_cameraZoomTween.tween_property($Camera2D, "zoom", Vector2(0.67,0.67), 3).set_trans(Tween.TRANS_QUART);
 	_cameraPosTween.tween_property($Camera2D, "position", Vector2(654, 140), 3).set_trans(Tween.TRANS_QUART);
 	_bgTween = _bgTween.tween_property($CanvasLayer/TextureRect, "position", Vector2(-480,-540), 3).set_trans(Tween.TRANS_QUART);
+	await _bgTween.finished;
+	emit_signal("camera_finished");
 
+## Atualiza a barra de vida no canto superior esquerdo.
+func update_healthbar(max_value, current_value, value) -> void:
+	var _tween = get_tree().create_tween();
+	var _healthBar : ProgressBar = $CanvasLayer/ProgressBar;
+	var _healthBarText : Label = $CanvasLayer/ProgressBar/Label
+	_tween.tween_property(_healthBar, "value", value, 0.5);
+	_healthBarText.text = "%s / %s" %[current_value, max_value];
+	
 
 ## Avisa na tela qual wave o jogador está
 func show_wave():
@@ -89,7 +103,7 @@ func show_wave():
 	warn.text = "WAVE " + str(Global.current_wave);
 	currWave.visible = false;
 	warn.scale = Vector2(1,1);
-	warn.modulate.a = 0.0
+	warn.modulate.a = 0.0;
 	var _alphaTween = get_tree().create_tween();
 	var _sizeTween = get_tree().create_tween();
 	_alphaTween.tween_property (
@@ -114,3 +128,7 @@ func show_wave():
 	);
 	await (_alphaTween.finished);
 	currWave.visible = true;
+
+func show_hud(node) -> void:
+	var _tween = get_tree().create_tween();
+	_tween.tween_property(node, "modulate", Color(1.0,1.0,1.0,1.0), 0.7);

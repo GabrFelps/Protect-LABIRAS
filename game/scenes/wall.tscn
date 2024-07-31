@@ -25,6 +25,7 @@ texture_filter = 1
 shape = SubResource("ConvexPolygonShape2D_i030u")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -25.2
 offset_top = -94.4
 offset_right = 14.8

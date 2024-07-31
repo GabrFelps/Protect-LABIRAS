@@ -22,7 +22,7 @@ func _physics_process(delta: float):
 	
 	# Aumenta a força
 	if launchPower > 0:
-		launchPower = min(launchPower + 0.85, 100.0);
+		launchPower = min(launchPower + 1.0, 100.0);
 	trajectory.modulate.a = launchPower/45; # estética de aumento de opacidade
 
 ## Input do mouse

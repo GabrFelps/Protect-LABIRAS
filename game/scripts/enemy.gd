@@ -17,7 +17,7 @@ var health : int
 func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
-	initialize()
+	initialize();
 	velocity.x = -SPEED;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
@@ -52,6 +52,7 @@ func _hit_flash():
 	sprite_node.material.set("shader_parameter/active", false);
 
 func die():
+	print("AIAIA")
 	Global.dead_enemies_in_wave += 1;
 	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
 	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):

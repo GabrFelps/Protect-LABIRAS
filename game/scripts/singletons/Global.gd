@@ -20,7 +20,7 @@ var enemies_already_instatiated = 0;
 
 var current_wave : int = 1; 
 var enemy_database : Dictionary = {};
-var base_number_enemies : int = 8;
+const base_number_enemies : int = 8;
 var max_enemy_per_wave : int;
 var dead_enemies_in_wave: int = 0;
 
@@ -34,6 +34,13 @@ func _process(delta) -> void:
 		enemyNode.all_enemies_died.connect(change_wave);
 		enemyNode = null;
 	
+## função para restaurar as propiedades do jogo
+func restore_properties_game() -> void:
+	current_wave = 1;
+	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
+	enemies_already_instatiated = 0;
+	dead_enemies_in_wave = 0;
+
 ## função que verifica quando pode ser atualizada as propiedades do jogo
 func update_properties() -> void:
 	if current_wave in waves:

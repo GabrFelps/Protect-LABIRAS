@@ -11,6 +11,7 @@ func _ready():
 	buttons_starting_animation();
 
 func _on_start_pressed():
+	Global.restore_properties_game();
 	for node in get_children():
 		if node is Control:
 			var _tween = get_tree().create_tween();

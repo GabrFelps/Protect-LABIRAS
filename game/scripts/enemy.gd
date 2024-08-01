@@ -51,7 +51,6 @@ func _hit_flash():
 	sprite_node.material.set("shader_parameter/active", false);
 
 func die():
-	print("AIAIA")
 	Global.dead_enemies_in_wave += 1;
 	Global.points += POINTS;
 	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual

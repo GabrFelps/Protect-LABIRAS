@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqknges673yk4"]
+[gd_scene load_steps=11 format=3 uid="uid://bqknges673yk4"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_dmpuy"]
 [ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="1_eet01"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="5_ljoss"]
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="6_m7m7j"]
 [ext_resource type="PackedScene" uid="uid://be5v4nmxqnier" path="res://scenes/pause.tscn" id="7_yc2xl"]
+[ext_resource type="AudioStream" uid="uid://b3s8ee73blh5m" path="res://sounds/BGM/world.mp3" id="8_q2sc8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5i732"]
 font_size = 32
@@ -132,6 +133,10 @@ vertical_alignment = 1
 process_mode = 3
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_q2sc8")
+autoplay = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 

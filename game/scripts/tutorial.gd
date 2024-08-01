@@ -17,6 +17,8 @@ var texts = [
 ];
 
 func _ready():
+	$AudioPlayer.play(Global.seek_music);
+	$AudioPlayer.stream.set_loop(true);
 	target.connect("targetDown", proceed_popup);
 	popUp.visible = false;
 	popUpText.text = texts[textIndex];

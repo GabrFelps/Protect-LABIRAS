@@ -22,7 +22,7 @@ func update_max_health():
 # Restaura 15% do hp do muro
 func restore_health():
 	var _prevHealth = health;
-	health = clamp(health+(MAX_HEALTH*0.15), 0, MAX_HEALTH);
+	health = clamp(health+(MAX_HEALTH*0.10), 0, MAX_HEALTH);
 	var _particles : CPUParticles2D = health_particles.instantiate();
 	_particles.emitting = true;
 	add_child(_particles);
@@ -34,7 +34,7 @@ func take_damage(attack : Attack):
 	var _prevHealth = health;
 	health -= attack.attack_damage;
 	if health <= 0:
-		Global.changeScene("game_over");
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn");
 		return;
 	update_health_label();
 	get_parent().update_healthbar(MAX_HEALTH, max(health, 0), (health/MAX_HEALTH * 100));

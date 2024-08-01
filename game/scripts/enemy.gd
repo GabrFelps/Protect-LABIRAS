@@ -19,7 +19,7 @@ func _ready() -> void:
 	Global.enemyNode = self;
 	initialize();
 	label.visible = false;
-	velocity.x = -SPEED**2.14;
+	velocity.x = -SPEED * 15;
 	health = MAX_HEALTH;
 	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
 	

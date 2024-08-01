@@ -1,11 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgjth652j1i5"]
+[gd_scene load_steps=16 format=3 uid="uid://cgjth652j1i5"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5djt2"]
 [ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="2_bykrk"]
+[ext_resource type="Texture2D" uid="uid://bggk6oqbs51f5" path="res://assets/Enemy/corona.png" id="3_vied6"]
+[ext_resource type="PackedScene" uid="uid://bgd63dkfb34m0" path="res://scenes/enemy_hitbox.tscn" id="4_v78ur"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mweq"]
-radius = 2.48514
-height = 17.0933
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl3m5"]
+atlas = ExtResource("3_vied6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpetp"]
+atlas = ExtResource("3_vied6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wag8p"]
+atlas = ExtResource("3_vied6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w4xu"]
+atlas = ExtResource("3_vied6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1sid"]
+atlas = ExtResource("3_vied6")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxnj3"]
+atlas = ExtResource("3_vied6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcwo0"]
+atlas = ExtResource("3_vied6")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcyd8"]
+atlas = ExtResource("3_vied6")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8e8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl3m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpetp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wag8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w4xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1sid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxnj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcwo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcyd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnj58"]
+radius = 5.10731
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4n5v"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -15,34 +82,33 @@ script = ExtResource("1_5djt2")
 deathParticle = ExtResource("2_bykrk")
 my_key = "covid20"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -15.0
-offset_top = -68.0
-offset_right = 10.0
-offset_bottom = 57.0
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_m8e8v")
 autoplay = "default"
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+frame_progress = 0.758035
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-5, -4)
+position = Vector2(-2, 3)
 scale = Vector2(8.04785, 8.30737)
-shape = SubResource("CapsuleShape2D_0mweq")
+shape = SubResource("CircleShape2D_dnj58")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -26.0
 offset_top = -117.0
 offset_right = 14.0
 offset_bottom = -94.0
+
+[node name="Hitbox" parent="." instance=ExtResource("4_v78ur")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-2, 4)
+scale = Vector2(4.68618, 4.68618)
+shape = SubResource("CircleShape2D_d4n5v")
+
+[editable path="Hitbox"]

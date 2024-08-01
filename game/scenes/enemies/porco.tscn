@@ -44,11 +44,4 @@ rotation = 1.5708
 scale = Vector2(8.04785, 8.30737)
 shape = SubResource("CapsuleShape2D_0mweq")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -20.0
-offset_top = -97.0
-offset_right = 20.0
-offset_bottom = -74.0
-
 [editable path="Hitbox"]

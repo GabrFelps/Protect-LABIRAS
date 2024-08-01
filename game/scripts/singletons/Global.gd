@@ -1,7 +1,6 @@
 extends Node
 @onready var enemy_db: Dictionary = {};
 @onready var game_db : Dictionary = {};
-
 # tutorial controls
 var showingPopUp: bool = false
 
@@ -17,7 +16,7 @@ signal wave_changed;
 var waves : Array = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 # inimigos ja instanciados
 var enemies_already_instatiated = 0;
-
+var points : int = 0;
 var current_wave : int = 1; 
 var enemy_database : Dictionary = {};
 const base_number_enemies : int = 8;
@@ -36,7 +35,9 @@ func _physics_process(delta) -> void:
 	
 ## função para restaurar as propiedades do jogo
 func restore_properties_game() -> void:
-	current_wave = 15;
+
+	current_wave = 1;
+	points = 0;
 	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	enemies_already_instatiated = 0;
 	dead_enemies_in_wave = 0;

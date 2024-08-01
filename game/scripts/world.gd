@@ -73,7 +73,7 @@ func _on_spawn_timer_timeout():
 		_on_spawn_timer_timeout();
 
 
-## Transição de câmera
+## Transição de câmeraF
 func move_camera_to_place():
 	$CanvasLayer/TextureRect.global_position = Vector2(0 ,-480);
 	$Camera2D.zoom = Vector2(1.0,1.0);

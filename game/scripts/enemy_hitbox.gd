@@ -6,5 +6,7 @@ func _on_area_entered(area):
 	if _areaParent.has_method("take_damage"):
 		var _atk = Attack.new();
 		_atk.attack_damage = get_parent().DAMAGE;
+		var _point = get_parent().POINTS;
+		Global.points -= _point;
 		_areaParent.take_damage(_atk);
 	get_parent().die();

@@ -8,7 +8,6 @@ extends CharacterBody2D
 @export var POINTS : int = 10;
 var wave_min : int;
 @onready var sprite_node : AnimatedSprite2D = get_node("Sprite"); 
-@onready var label = $Label
 
 # signal que é emitido quando todos os inimigos da wave atual morrerem
 signal all_enemies_died;
@@ -18,10 +17,8 @@ func _ready() -> void:
 	wave_min = int(Global.enemy_db.get(my_key).get("wave_min"));
 	Global.enemyNode = self;
 	initialize();
-	label.visible = false;
 	velocity.x = -SPEED**2.14;
 	health = MAX_HEALTH;
-	label.text = my_key +"\nmax health: " + str(MAX_HEALTH);
 	
 
 ## Atualiza valores das variáveis conforme o banco de dados
@@ -55,6 +52,7 @@ func _hit_flash():
 func die():
 	print("AIAIA")
 	Global.dead_enemies_in_wave += 1;
+	Global.points += POINTS;
 	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
 	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
 		emit_signal("all_enemies_died");

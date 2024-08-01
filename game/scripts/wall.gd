@@ -4,11 +4,11 @@ extends Area2D
 @onready var health: float;
 
 @onready var health_particles : PackedScene = preload("res://scenes/health_particles.tscn");
-
+@onready var scene_game_over : PackedScene = preload("res://scenes/game_over.tscn");
 
 func _ready():
 	Global.update_game_properties.connect(update_max_health);
-	Global.wave_changed.connect(restore_health);
+	Global.update_game_properties.connect(restore_health);
 	update_max_health();
 	health = MAX_HEALTH;
 	update_health_label();
@@ -34,7 +34,8 @@ func take_damage(attack : Attack):
 	var _prevHealth = health;
 	health -= attack.attack_damage;
 	if health <= 0:
-		pass;
+		Global.changeScene("game_over");
+		return;
 	update_health_label();
 	get_parent().update_healthbar(MAX_HEALTH, max(health, 0), (health/MAX_HEALTH * 100));
 

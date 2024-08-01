@@ -42,10 +42,4 @@ shape = SubResource("CapsuleShape2D_0mweq")
 position = Vector2(-4, 0)
 shape = SubResource("CapsuleShape2D_n47el")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -100.0
-offset_right = 17.0
-offset_bottom = -77.0
-
 [editable path="Hitbox"]

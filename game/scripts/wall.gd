@@ -8,6 +8,7 @@ extends Area2D
 
 func _ready():
 	Global.update_game_properties.connect(update_max_health);
+	Global.wave_changed.connect(restore_health);
 	update_max_health();
 	health = MAX_HEALTH;
 	update_health_label();

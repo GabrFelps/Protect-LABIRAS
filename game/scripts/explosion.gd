@@ -19,7 +19,7 @@ func _physics_process(_delta : float) -> void:
 func _on_area_entered(area):
 	var _attack = Attack.new();
 	# pega o dano do canhão
-	_attack.attack_damage = get_node("/root/World/Cannon").damage;
+	_attack.attack_damage = get_parent().get_node("Cannon").damage;
 	
 	# danifica o inimigo atingido, passando um objeto do tipo Attack
 	if area.get_parent().has_method("take_damage"):

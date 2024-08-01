@@ -24,7 +24,7 @@ var max_enemy_per_wave : int;
 var dead_enemies_in_wave: int = 0;
 
 func _ready():
-	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
+	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	get_db("enemy_db");
 	get_db("game_db"); 
 
@@ -35,9 +35,10 @@ func _physics_process(delta) -> void:
 	
 ## função para restaurar as propiedades do jogo
 func restore_properties_game() -> void:
+
 	current_wave = 1;
 	points = 0;
-	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
+	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	enemies_already_instatiated = 0;
 	dead_enemies_in_wave = 0;
 
@@ -55,7 +56,7 @@ func change_wave() -> void:
 	dead_enemies_in_wave = 0;
 	current_wave += 1;
 	update_properties();
-	max_enemy_per_wave = int(base_number_enemies * (1.08 ** current_wave));
+	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	# atualiza o valor de inimigos instanciados
 	enemies_already_instatiated = 0;
 	start_spawn_timer();

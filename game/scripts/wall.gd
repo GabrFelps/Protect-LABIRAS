@@ -8,7 +8,7 @@ extends Area2D
 
 func _ready():
 	Global.update_game_properties.connect(update_max_health);
-	Global.update_game_properties.connect(restore_health);
+	Global.wave_changed.connect(restore_health);
 	update_max_health();
 	health = MAX_HEALTH;
 	update_health_label();
@@ -27,14 +27,14 @@ func restore_health():
 	_particles.emitting = true;
 	add_child(_particles);
 	update_health_label();
-	get_parent().update_healthbar(MAX_HEALTH, health, health/MAX_HEALTH * 100);
+	get_parent().update_healthbar(int(MAX_HEALTH), int(health), health/MAX_HEALTH * 100);
 
 ## Toma dano
 func take_damage(attack : Attack):
 	var _prevHealth = health;
 	health -= attack.attack_damage;
 	if health <= 0:
-		Global.changeScene("game_over");
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn");
 		return;
 	update_health_label();
 	get_parent().update_healthbar(MAX_HEALTH, max(health, 0), (health/MAX_HEALTH * 100));

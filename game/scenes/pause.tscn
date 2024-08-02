@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="1_j31n3"]
 
 [node name="Pause" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_i7340")
 
 [node name="BG" type="ColorRect" parent="."]

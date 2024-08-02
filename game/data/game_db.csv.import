@@ -1,3 +1,17 @@
 [remap]
 
-importer="keep"
+importer="csv_translation"
+type="Translation"
+uid="uid://cyrm30eiqt8y7"
+
+[deps]
+
+files=["res://data/game_db.wall.translation", "res://data/game_db.cannon.translation"]
+
+source_file="res://data/game_db.csv"
+dest_files=["res://data/game_db.wall.translation", "res://data/game_db.cannon.translation"]
+
+[params]
+
+compress=true
+delimiter=0

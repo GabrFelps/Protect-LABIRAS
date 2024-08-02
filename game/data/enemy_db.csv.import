@@ -1,3 +1,17 @@
 [remap]
 
-importer="keep"
+importer="csv_translation"
+type="Translation"
+uid="uid://0brel6a3os7f"
+
+[deps]
+
+files=["res://data/enemy_db.max.translation", "res://data/enemy_db.damage.translation", "res://data/enemy_db.speed.translation", "res://data/enemy_db.points.translation", "res://data/enemy_db.wave.translation"]
+
+source_file="res://data/enemy_db.csv"
+dest_files=["res://data/enemy_db.max.translation", "res://data/enemy_db.damage.translation", "res://data/enemy_db.speed.translation", "res://data/enemy_db.points.translation", "res://data/enemy_db.wave.translation"]
+
+[params]
+
+compress=true
+delimiter=0

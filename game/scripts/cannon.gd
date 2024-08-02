@@ -8,7 +8,6 @@ extends Area2D
 var launchPower : float = 0.0;
 var maxPoints : int = 125;
 var damage = 1;
-
 @export var launchPowMultiplier: float;
 
 func _ready():
@@ -26,8 +25,7 @@ func _physics_process(delta: float):
 	trajectory.modulate.a = launchPower/45; # estética de aumento de opacidade
 
 ## Input do mouse
-func _input(event: InputEvent) -> void:
-	#print(event);
+func _input(event) -> void:
 	if event is InputEventMouseButton and is_physics_processing():
 		if event.button_index == 1:
 			# Aumentar a força da bola
@@ -39,10 +37,12 @@ func _input(event: InputEvent) -> void:
 			if event.is_released():
 				launchDirection = $CannonBarrel.rotation_degrees;
 				var _shootingPos = shootingMarker.global_position;
-				shoot(launchPower, _shootingPos);
-				launchPower = 0.0;
-				trajectory.hide();
-				emit_firing_particles();
+				if $CooldownTimer.is_stopped():
+					shoot(launchPower, _shootingPos);
+					launchPower = 0.0;
+					trajectory.hide();
+					emit_firing_particles();
+					$CooldownTimer.start()
 
 ## Atualiza o dano da bala de canhão de acordo com a wave atual
 func update_cannon_damage() -> void:
@@ -90,5 +90,6 @@ func emit_firing_particles():
 	var _particles : CPUParticles2D = firingParticles.instantiate();
 	_particles.one_shot = true;
 	_particles.set_emitting(true);
+	_particles.get_child(0).set_emitting(true);
 	_particles.global_position = Vector2.ZERO
 	shootingMarker.add_child(_particles)

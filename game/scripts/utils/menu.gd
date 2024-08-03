@@ -1,8 +1,10 @@
 extends Control
 
 signal finish;
+@onready var audio_player : AudioStreamPlayer = $AudioPlayer
 
 func _ready():
+	audio_player.stream.set_loop(true);
 	blank_nodes();
 	bg_starting_animation();
 	await finish;
@@ -32,6 +34,7 @@ func _on_tutorial_pressed():
 				await _tween.finished;
 	bg_up_animation();
 	await finish;
+	Global.seek_music = audio_player.get_playback_position()
 	get_tree().change_scene_to_file("res://scenes/tutorial.tscn");
 
 func _on_exit_pressed():

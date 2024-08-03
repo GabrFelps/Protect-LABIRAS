@@ -23,9 +23,10 @@ func move_camera_to_place():
 	emit_signal("camera_finished");
 
 func show_result_final() -> void:
-	$CanvasLayer/Label.text = "Wall was destroyed\nPoints: " + str(Global.points);
+	$CanvasLayer/Label.text = "Wall was destroyed!\nPoints: " + str(Global.points);
+	$CanvasLayer/Label.visible = true;
 	$CanvasLayer/Buttons.visible = true;
-
+	$CanvasLayer/Label2.visible = true;
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn");

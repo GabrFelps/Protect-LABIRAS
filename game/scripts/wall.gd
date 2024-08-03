@@ -22,7 +22,7 @@ func update_max_health():
 # Restaura 15% do hp do muro
 func restore_health():
 	var _prevHealth = health;
-	health = clamp(health+(MAX_HEALTH*0.15), 0, MAX_HEALTH);
+	health = clamp(health+(MAX_HEALTH*0.10), 0, MAX_HEALTH);
 	var _particles : CPUParticles2D = health_particles.instantiate();
 	_particles.emitting = true;
 	add_child(_particles);

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl0msmitbamhv"]
+[gd_scene load_steps=7 format=3 uid="uid://bl0msmitbamhv"]
 
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="1_0iqvr"]
 [ext_resource type="Script" path="res://scripts/utils/menu.gd" id="1_6vca8"]
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="3_kl8k2"]
+[ext_resource type="AudioStream" uid="uid://ba2q6g2e42yey" path="res://sounds/BGM/menu.mp3" id="4_nxjkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl1u1"]
 bg_color = Color(1, 1, 0, 1)
@@ -138,6 +139,10 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_kl8k2")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nxjkl")
+autoplay = true
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/Tutorial" to="." method="_on_tutorial_pressed"]

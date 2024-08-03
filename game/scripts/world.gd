@@ -1,6 +1,7 @@
 extends Node2D
 
 signal camera_finished;
+@onready var audio_player = $AudioPlayer;
 
 # dicionário de cenas de inimigos
 var enemies : Dictionary = {
@@ -24,6 +25,7 @@ var enemies : Dictionary = {
 
 
 func _ready():
+	audio_player.stream.set_loop(true);
 	Global.levelNode = self;
 	Global.wave_changed.connect(show_wave);
 	move_camera_to_place();
@@ -93,7 +95,7 @@ func update_healthbar(max_value, current_value, value) -> void:
 	var _healthBar : ProgressBar = $CanvasLayer/ProgressBar;
 	var _healthBarText : Label = $CanvasLayer/ProgressBar/Label
 	_tween.tween_property(_healthBar, "value", value, 0.5);
-	_healthBarText.text = "%s / %s" %[current_value, max_value];
+	_healthBarText.text = "%s / %s" %[int(current_value), int(max_value)];
 	
 
 ## Avisa na tela qual wave o jogador está

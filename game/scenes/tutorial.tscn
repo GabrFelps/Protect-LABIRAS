@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwa22ru84wppf"]
+[gd_scene load_steps=16 format=3 uid="uid://cwa22ru84wppf"]
 
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="1_g71e4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_hm2lk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="4_qpchs"]
 [ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="4_yta0n"]
 [ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="7_h3ngq"]
+[ext_resource type="AudioStream" uid="uid://ba2q6g2e42yey" path="res://sounds/BGM/menu.mp3" id="11_u2tj8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu171"]
 
@@ -144,5 +145,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1c1m2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1c1m2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ocmwr")
 text = "NEXT"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_u2tj8")
 
 [connection signal="pressed" from="CanvasLayer/Container/Next" to="." method="_on_next_pressed"]

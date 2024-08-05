@@ -27,7 +27,7 @@ var seek_music = 0
 func _ready():
 	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	get_db("enemy_db");
-	get_db("game_db"); 
+	get_db("game_db");
 
 func _physics_process(delta) -> void:
 	if enemyNode != null:
@@ -93,3 +93,5 @@ func get_db(page_name: String):
 				for i in range(1, len(_header)):
 					game_db[this_line[0]][_header[i]] = this_line[i];
 			
+func peido(prev, act):
+	print('glopsol')

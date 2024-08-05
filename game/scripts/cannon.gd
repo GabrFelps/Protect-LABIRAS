@@ -83,7 +83,7 @@ func _update_trajectory(delta):
 		vel.y += gravity * delta;
 		pos += vel * delta;
 		if pos.y > get_parent().get_node("Ground").position.y - 225:
-			break
+			break;
 			
 ## Emite as particulas do tiro do canhão
 func emit_firing_particles():

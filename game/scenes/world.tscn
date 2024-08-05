@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqknges673yk4"]
+[gd_scene load_steps=12 format=3 uid="uid://bqknges673yk4"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_dmpuy"]
 [ext_resource type="PackedScene" uid="uid://wlsbi66507wv" path="res://scenes/cannon.tscn" id="1_eet01"]
 [ext_resource type="PackedScene" uid="uid://tyisjv06sou1" path="res://scenes/wall.tscn" id="2_7jij6"]
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="3_6kyds"]
+[ext_resource type="Script" path="res://scripts/utils/camera.gd" id="5_6pj6y"]
 [ext_resource type="Texture2D" uid="uid://ddt4n4bmnj1mi" path="res://assets/background_menu.jpg" id="5_ljoss"]
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="6_m7m7j"]
 [ext_resource type="PackedScene" uid="uid://be5v4nmxqnier" path="res://scenes/pause.tscn" id="7_yc2xl"]
@@ -48,6 +49,9 @@ position = Vector2(1442, 520)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(654, 140)
 zoom = Vector2(0.67, 0.67)
+script = ExtResource("5_6pj6y")
+randomShakeStrenght = 8.5
+shakeDecayRate = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

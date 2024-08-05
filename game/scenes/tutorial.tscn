@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwa22ru84wppf"]
+[gd_scene load_steps=17 format=3 uid="uid://cwa22ru84wppf"]
 
 [ext_resource type="PackedScene" uid="uid://pmv2jcvf4u1c" path="res://scenes/ground.tscn" id="1_g71e4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_hm2lk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bni87gmhyxwr2" path="res://assets/themes/menu.tres" id="4_qpchs"]
 [ext_resource type="PackedScene" uid="uid://cd53iuowivrno" path="res://scenes/death_particle.tscn" id="4_yta0n"]
 [ext_resource type="FontFile" uid="uid://pfj2yl0cyvts" path="res://assets/fonts/Pixellari.ttf" id="7_h3ngq"]
+[ext_resource type="Script" path="res://scripts/utils/camera.gd" id="8_ol4vd"]
 [ext_resource type="AudioStream" uid="uid://ba2q6g2e42yey" path="res://sounds/BGM/menu.mp3" id="11_u2tj8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pu171"]
@@ -76,6 +77,9 @@ scale = Vector2(0.87, 0.87)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(654, 140)
 zoom = Vector2(0.67, 0.67)
+script = ExtResource("8_ol4vd")
+randomShakeStrenght = 9.0
+shakeDecayRate = 6.0
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -1

@@ -27,6 +27,19 @@ func show_result_final() -> void:
 	$CanvasLayer/Label.visible = true;
 	$CanvasLayer/Buttons.visible = true;
 	$CanvasLayer/Label2.visible = true;
+	animations();
+
+func animations():
+	for node in $CanvasLayer.get_children():
+		if node.get_class() in ["Label", "VBoxContainer"]:
+			node.modulate.a = 0;
+			var _tween = get_tree().create_tween();
+			_tween.tween_property (
+				node,
+				"modulate",
+				Color.WHITE,
+				1.2
+			).set_trans(Tween.TRANS_QUAD);
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn");

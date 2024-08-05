@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export var deathParticle : PackedScene;
 @export var my_key : String
@@ -11,6 +12,8 @@ var wave_min : int;
 
 # signal que é emitido quando todos os inimigos da wave atual morrerem
 signal all_enemies_died;
+
+signal enemy_died(prevPoints,points);
 var health : int
 
 func _ready() -> void:
@@ -52,11 +55,13 @@ func _hit_flash():
 
 func die():
 	Global.dead_enemies_in_wave += 1;
+	var _previousPoints = Global.points;
 	Global.points += POINTS;
 	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
 	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
 		emit_signal("all_enemies_died");
 	init_explosion();
+	emit_signal("enemy_died", _previousPoints, Global.points);
 	queue_free();
 
 ## função para acionar partícula de explosão

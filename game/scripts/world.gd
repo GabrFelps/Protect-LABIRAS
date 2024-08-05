@@ -18,10 +18,10 @@ var enemies : Dictionary = {
 	"carteira"         : preload("res://scenes/enemies/carteira.tscn"),
 }
 
-@onready var top = $Top
-@onready var bottom = $Bottom
+@onready var top = $Top;
+@onready var bottom = $Bottom;
 @onready var spawn_timer = get_node("SpawnTimer");
-@onready var label_wave = $CanvasLayer/Label
+@onready var label_wave = $CanvasLayer/Label;
 
 
 func _ready():

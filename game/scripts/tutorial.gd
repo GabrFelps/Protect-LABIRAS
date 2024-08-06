@@ -1,6 +1,7 @@
 extends Node2D
 
 signal finish_anim;
+signal bg_anim_finished;
 
 @onready var popUpText : Label = get_node("CanvasLayer/Container/Panel/Label");
 @onready var popUpPanel : Panel = get_node("CanvasLayer/Container/Panel")
@@ -23,8 +24,8 @@ func _ready():
 	popUp.visible = false;
 	popUpText.text = texts[textIndex];
 	Global.showingPopUp = false;
-	_bg_start_anim();
-	_camera_start_anim();
+	_bg_anim("start");
+	_camera_anim("start");
 	await (get_tree().create_timer(1.5).timeout);
 	Global.showingPopUp = true;
 	panel_anim(popUpPanel, popUpPanel.custom_minimum_size, "in");
@@ -36,28 +37,49 @@ func _physics_process(delta):
 		popUp.visible = true;
 
 
-func _bg_start_anim():
+func _bg_anim(mode):
 	var _bg : TextureRect = $BG/TextureRect;
-	_bg.position.y = -60;
 	var _tween = get_tree().create_tween();
-	_tween.tween_property(
-		_bg,
-		"position",
-		Vector2(0.0,-480.0),
-		1.0
-	).set_trans(Tween.TRANS_QUAD);
+	match mode:
+		"start":
+			_bg.position.y = -60;
+			_tween.tween_property(
+				_bg,
+				"position",
+				Vector2(0.0,-480.0),
+				1.0
+			).set_trans(Tween.TRANS_QUAD);
+			
+		"exit":
+			_tween.tween_property(
+				_bg,
+				"position",
+				Vector2(0.0,-60),
+				1.0
+			).set_trans(Tween.TRANS_QUAD);
 
-
-func _camera_start_anim():
+func _camera_anim(mode):
 	var _camera : Camera2D = $Camera2D;
-	_camera.position.y = -600;
 	var _tween = get_tree().create_tween();
-	_tween.tween_property(
-		_camera,
-		"position",
-		Vector2(654,140),
-		1.0
-	).set_trans(Tween.TRANS_QUAD);
+	match mode:
+		"start":
+			_camera.position.y = -600;
+			_tween.tween_property(
+				_camera,
+				"position",
+				Vector2(654,140),
+				1.0
+			).set_trans(Tween.TRANS_QUAD);
+			
+		"exit":
+			_tween.tween_property(
+				_camera,
+				"position",
+				Vector2(654,-600),
+				1.0
+			).set_trans(Tween.TRANS_QUAD);
+			await _tween.finished;
+			emit_signal("bg_anim_finished")
 
 func proceed_popup():
 	Global.showingPopUp = true;
@@ -72,12 +94,18 @@ func _on_next_pressed():
 	panel_anim(popUpPanel, Vector2(600,200), "in")
 	match textIndex:
 		5:
-			textIndex = -1
+			textIndex = 4;
+			get_node("CanvasLayer/Container/Panel").visible = false;
+			get_node("CanvasLayer/Container/Next").visible = false;
+			_bg_anim("exit");
+			_camera_anim("exit");
+			await bg_anim_finished;
 			get_tree().change_scene_to_file("res://scenes/menu.tscn");
 		4:
 			popUp.visible = false
 			Global.showingPopUp = false;
-		
+	
+	print(textIndex)
 	popUpText.text = texts[textIndex];
 
 func panel_anim(node, size, mode: String):

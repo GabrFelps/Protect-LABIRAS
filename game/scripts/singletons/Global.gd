@@ -36,8 +36,7 @@ func _physics_process(delta) -> void:
 	
 ## função para restaurar as propiedades do jogo
 func restore_properties_game() -> void:
-
-	current_wave = 40;
+	current_wave = 1;
 	points = 0;
 	max_enemy_per_wave = int((1.08 ** current_wave) + current_wave + 3);
 	enemies_already_instatiated = 0;

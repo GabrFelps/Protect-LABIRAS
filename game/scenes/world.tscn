@@ -134,6 +134,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Pause" parent="." instance=ExtResource("7_yc2xl")]
+visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
 

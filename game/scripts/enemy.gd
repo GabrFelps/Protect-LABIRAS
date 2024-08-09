@@ -53,15 +53,19 @@ func _hit_flash():
 	await (get_tree().create_timer(0.15).timeout);
 	sprite_node.material.set("shader_parameter/active", false);
 
-func die():
+func die(no_points = false):
 	Global.dead_enemies_in_wave += 1;
-	var _previousPoints = Global.points;
-	Global.points += POINTS;
 	# verificando se a quantidade de inimigos mortos é igual ao quantidade max de inimigos da wave atual
 	if (Global.dead_enemies_in_wave == Global.max_enemy_per_wave):
 		emit_signal("all_enemies_died");
+		
 	init_explosion();
-	emit_signal("enemy_died", _previousPoints, Global.points);
+	if !no_points:
+		show_points();
+		var _previousPoints = Global.points;
+		Global.points += POINTS;
+		emit_signal("enemy_died", _previousPoints, Global.points);
+		
 	queue_free();
 
 ## função para acionar partícula de explosão
@@ -71,4 +75,11 @@ func init_explosion() -> void:
 	_particle.global_position = self.global_position;
 	_particle.global_rotation = self.global_rotation;
 	_particle.emitting = true;
-	
+
+## Mostra uma label de quantos pontos o jogador ganhou após derrotar esse inimigo
+func show_points():
+	var _pointsLabel = PointsLabel.new();
+	_pointsLabel.text = "+ " + str(POINTS)+ "pts";
+	_pointsLabel.scale = Vector2(1.5, 1.5);
+	_pointsLabel.global_position = global_position - (Vector2(32.0, 20.0) * _pointsLabel.scale.x);
+	get_parent().add_child(_pointsLabel);

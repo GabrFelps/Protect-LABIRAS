@@ -1,24 +1,45 @@
 # Protect LABIRAS
 
-**Protect LABIRAS** é um jogo arcade 2D de estratégia que combina elementos dos gêneros **Tower Defense** e **Shooter**, proporcionando uma experiência rápida que testa o planejamento estratégico e os reflexos dos jogadores. O objetivo é defender um muro contra ondas crescentes de inimigos, utilizando uma mecânica simples de clique no mouse, que permite controlar um canhão e ajustar a distância do disparo.
+**Protect LABIRAS** is a fast-paced 2D arcade strategy game that blends Tower Defense and Shooter mechanics. Developed in Godot, the game challenges players to defend a wall from increasingly difficult waves of enemies by controlling a cannon with simple mouse clicks, combining strategic planning with quick reflexes.
 
-## Principais Mecânicas
+## Key Features
 
-- **Controles Simples**: Todas as ações são realizadas com o clique do mouse. Os jogadores controlam a distância do disparo pressionando e segurando o botão esquerdo, liberando para atirar. Essa mecânica simplificada torna o jogo acessível para diversos tipos de público.
-  
-- **Ondas Progressivas**: Cada nova onda traz mais inimigos, calculados para aumentar a dificuldade de acordo com a fórmula customizada baseada no número da onda. Ondas especiais desbloqueiam novos tipos de inimigos e melhoram propriedades do jogo, como a resistência do muro e o dano do canhão.
+- **Simple Controls:** Use the mouse to control the cannon’s shooting distance-press and hold the left button to adjust, release to fire. This intuitive mechanic makes the game accessible to all players.
+- **Progressive Waves:** Enemy waves grow in number and complexity based on a custom formula tied to the wave count. Special waves introduce new enemy types and enhance gameplay elements like wall durability and cannon damage.
+- **Strategic Depth:** Players must adapt quickly as enemy types and quantities evolve, requiring agile tactics to survive and protect the wall.
+- **Dynamic Enemy Attributes:** Enemy stats such as health, speed, and type are managed via a CSV database created in Google Sheets, imported into Godot using GDScript. This allows for easy balancing and scalable difficulty adjustments throughout development.
 
-- **Profundidade Estratégica**: Os jogadores precisam se adaptar rapidamente, já que a quantidade e os tipos de inimigos evoluem, desafiando-os a desenvolver estratégias ágeis para sobreviver.
+## Technologies Used
 
-## Integração com Banco de Dados
+- **Godot Engine** with GDScript for game logic and mechanics
+- **Piskel** for pixel art creation and animations
+- **Google Sheets** for managing enemy attributes via CSV
+- **Notion** for project planning and task management
+- **GitHub** for version control and collaboration
 
-Protect LABIRAS utiliza um banco de dados **CSV** criado no Google Planilhas para gerenciar os atributos dos inimigos, como vida, velocidade e tipo. Esse banco de dados é importado e processado na **Godot Game Engine** usando GDScript, o que permite ajustes dinâmicos nos atributos dos inimigos e facilita a escalabilidade do jogo. Essa abordagem permite atualizações rápidas e manutenção contínua durante o desenvolvimento.
+## How to Play
 
-## Tecnologias Utilizadas
+1. Use the mouse to control the cannon’s shooting distance.
+2. Press and hold the left mouse button to aim.
+3. Release the button to fire at incoming enemies.
+4. Defend the wall against waves of enemies that increase in difficulty.
+5. Adapt your strategy as new enemy types appear and the challenge intensifies.
 
-- **Godot Game Engine** com GDScript para lógica e mecânicas do jogo.
-- **Piskel** para criação de artes em pixel e animações.
-- **Notion** para planejamento e controle de tarefas.
-- **GitHub** para controle de versão e colaboração.
+## Project Structure
 
+- **Assets:** Pixel art and animation files created with Piskel.
+- **Scripts:** GDScript files handling game mechanics and CSV data processing.
+- **Data:** CSV files containing enemy attributes.
+- **Documentation:** Planning and notes managed in Notion.
 
+## Contributing
+
+Contributions are welcome! Feel free to open issues, suggest features, or submit pull requests to improve the game.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Protect LABIRAS offers a compelling mix of strategy and action with scalable difficulty and dynamic gameplay. Dive in and defend the wall!
